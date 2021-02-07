@@ -22,6 +22,10 @@ export class TaskService {
     return this.httpClient.post<Task>(this.urlApi, task);
   }
 
+  completedPatch(id, completed){
+    return this.httpClient.patch(`${this.urlApi}/${id}`,{completed: !completed})
+  }
+
   /* add(){
     return this.httpClient.put(TasksComponent)
   } */

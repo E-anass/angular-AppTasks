@@ -41,7 +41,7 @@
                    </button>
 
                     {{ task.label }}
-                    <span [ngClass]="{
+                    <span (click)="updateStatus(task)" [ngClass]="{
                         'badge-info': task.completed,
                         'badge-danger': !task.completed
                     }" class="badge badge-secondary badge-pill">

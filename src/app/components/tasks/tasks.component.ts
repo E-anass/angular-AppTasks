@@ -30,6 +30,19 @@ export class TasksComponent implements OnInit {
   persistTask(){
     this.taskService.persist(this.myTask)
     .subscribe((task) => {this.tasks = [task, ...this.tasks]});
+    this.initTasks();
+  }
+
+  initTasks(){
+    this.myTask = {
+      label: " ",
+      status: false
+    }
+  }
+
+  updateStatus(task){
+    this.taskService.completedPatch(task.id, task.status)
+    .subscribe(() => {task.status= !task.status});
   }
 
   ngOnInit() {
