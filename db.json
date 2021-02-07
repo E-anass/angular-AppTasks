@@ -1,6 +1,14 @@
 {
-    "tasks": [
-      { "id": 1, "label": "Task 1", "completed": "false" },
-      { "id": 2, "label": "Task 2", "completed": "false"}
-    ]
+  "tasks": [
+    {
+      "id": 2,
+      "label": "Task 2",
+      "completed": true
+    },
+    {
+      "label": "coco",
+      "status": false,
+      "id": 3
+    }
+  ]
 }
