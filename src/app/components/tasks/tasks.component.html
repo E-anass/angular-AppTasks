@@ -42,12 +42,12 @@
 
                     {{ task.label }}
                     <span (click)="updateStatus(task)" [ngClass]="{
-                        'badge-info': task.completed,
-                        'badge-danger': !task.completed
+                        'badge-info': task.status,
+                        'badge-danger': !task.status
                     }" class="badge badge-secondary badge-pill">
                     <i class="fa" [ngClass]="{
-                        'fa-thumbs-down': !task.completed,
-                        'fa-thumbs-up': task.completed                        
+                        'fa-thumbs-up': task.status,                   
+                        'fa-thumbs-down': !task.status
                     }"></i>
                     </span>
 
