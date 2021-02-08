@@ -4,13 +4,13 @@
     </div>
 
     <div class="col-md-6 text-right">
-        <button class="btn btn-dark btn-sm">
+        <button (click)="addTask= !addTask" class="btn btn-dark btn-sm">
            <i class="fa fa-plus"></i> New Tasks
         </button>
     </div>
 </div>
 
-<div class="row">
+<div class="row" *ngIf = "addTask">
     <div class="col-md-6 mx-auto">
         <div class="form-group">
             <label for="label">label</label>
@@ -36,10 +36,13 @@
 
     <div class="row">
         <div class="col-md-6 mx-auto">
+
+            <input (keyup)="searchTask()" [(ngModel)]="searchText" placeholder="Search..." type="text" class="form-control">
+
             <ul class="list-group">
         
-                <li *ngFor="let task of tasks" class="list-group-item d-flex justify-content-between align-items-center">
-                   <button class="btn btn-warning btn-sm">
+                <li *ngFor="let task of resultTasks" class="list-group-item d-flex justify-content-between align-items-center">
+                   <button (click)="editTask(task)" class="btn btn-warning btn-sm">
                        <i class="fa fa-pencil"></i>
                    </button>
 

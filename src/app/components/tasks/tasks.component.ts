@@ -9,6 +9,8 @@ import { Task } from 'src/app/models/task';
 })
 export class TasksComponent implements OnInit {
 
+  searchText = '';
+  addTask= false;
   editForm= false;
 
   myTask: Task = {
@@ -17,11 +19,14 @@ export class TasksComponent implements OnInit {
   }
 
   tasks : Task[] = [];
+  resultTasks : Task[] = [];
+
   constructor(private taskService : TaskService) { }
 
   getData()
   {
-    this.taskService.findAll().subscribe(tasks => this.tasks = tasks);
+    this.taskService.findAll().subscribe(tasks => 
+      { this.resultTasks = this.tasks = tasks });
   }
 
   deleteTask(id){
@@ -33,6 +38,7 @@ export class TasksComponent implements OnInit {
     this.taskService.persist(this.myTask)
     .subscribe((task) => {this.tasks = [task, ...this.tasks]});
     this.initTasks();
+    this.addTask= false;
   }
 
   initTasks(){
@@ -63,6 +69,11 @@ export class TasksComponent implements OnInit {
     this.initTasks();
     this.editForm = false;
     })
+  }
+
+  searchTask(){
+    this.resultTasks = this.tasks.
+    filter((task) => task.label.toUpperCase().includes(this.searchText.toUpperCase()))
   }
 
 }
