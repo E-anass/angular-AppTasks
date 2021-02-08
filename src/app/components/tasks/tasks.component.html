@@ -23,11 +23,14 @@
                 Completed
             </label>
         </div>
-            {{myTask | json}}
-        <button (click)="persistTask()" class="btn btn-success btn-block">
-            <i class="fa fa-send"></i>Add Task
+            <!-- {{myTask | json}} -->
+        <button *ngIf="editForm" (click)="updateTask()" class="btn btn-warning btn-block">
+            <i class="fa fa-refresh"></i>  Update Task
         </button>
 
+        <button *ngIf="!editForm" (click)="persistTask()" class="btn btn-success btn-block">
+            <i class="fa fa-send"></i>  Add Task
+        </button>
     </div>
 </div>
 

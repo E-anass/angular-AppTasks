@@ -26,6 +26,10 @@ export class TaskService {
     return this.httpClient.patch(`${this.urlApi}/${id}`,{completed: !completed})
   }
 
+  update(task){
+    return this.httpClient.put(`${this.urlApi}/${task.id}`, task)
+  }
+
   /* add(){
     return this.httpClient.put(TasksComponent)
   } */

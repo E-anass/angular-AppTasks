@@ -9,6 +9,8 @@ import { Task } from 'src/app/models/task';
 })
 export class TasksComponent implements OnInit {
 
+  editForm= false;
+
   myTask: Task = {
     label: '',
     status: false
@@ -48,6 +50,19 @@ export class TasksComponent implements OnInit {
   ngOnInit() {
     this.getData();
     //this.deleteTask(this.tasks);
+  }
+
+  editTask(task){
+    this.myTask = task;
+    this.editForm = true;
+  }
+
+  updateTask(){
+    this.taskService.update(this.myTask)
+    .subscribe( task => {
+    this.initTasks();
+    this.editForm = false;
+    })
   }
 
 }
